@@ -1,8 +1,5 @@
 import pandas as pd
 import numpy as np
-import statsmodels.tsa.stattools as st
-import plotly.express as px
-from datetime import datetime
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from prophet import Prophet
 
@@ -16,3 +13,4 @@ data.set_index(pd.DatetimeIndex(data['Timestamp']), inplace=True)
 model = ExponentialSmoothing(data['trips'], trend='mul', damped_trend=True, seasonal='add', seasonal_periods=24*7, freq='h')
 modelFit = model.fit()
 pred = modelFit.forecast(forecast_size)
+
